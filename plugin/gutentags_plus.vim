@@ -13,7 +13,7 @@ let s:windows = has('win32') || has('win64') || has('win16') || has('win95')
 let s:cscope_native = get(g:, 'gutentags_plus_native', 1)
 
 if v:version >= 800
-	if has('nvim-0.9.0') == 0
+	if ( has('nvim-0.9.0')  == 0 ) && ( s:cscope_native == 1 )
 		set cscopequickfix=s+,c+,d+,i+,t+,e+,g+,f+,a+
 	else
 		let s:cscope_native = 0
@@ -361,9 +361,9 @@ function! s:GscopeFind(bang, what, ...)
 		call s:ErrorMsg('gtags database is not ready yet')
 		return 0
 	endif
-	if s:cscope_native
-		call s:GscopeAdd()
-	endif
+	" if s:cscope_native
+	" 	call s:GscopeAdd()
+	" endif
 	let ncol = col('.')
 	let nrow = line('.')
 	let nbuf = winbufnr('%')
