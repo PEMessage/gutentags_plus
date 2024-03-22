@@ -361,9 +361,9 @@ function! s:GscopeFind(bang, what, ...)
 		call s:ErrorMsg('gtags database is not ready yet')
 		return 0
 	endif
-	" if s:cscope_native
-	" 	call s:GscopeAdd()
-	" endif
+	if s:cscope_native
+		call s:GscopeAdd()
+	endif
 	let ncol = col('.')
 	let nrow = line('.')
 	let nbuf = winbufnr('%')
